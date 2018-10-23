@@ -1,0 +1,2 @@
+gfortran myfortran.f95
+./a.out
