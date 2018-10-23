@@ -1,0 +1,15 @@
+e(1)
+	{
+	fill
+		{
+			within
+				{
+					circle(0,0,5)
+				}
+			notin
+				{
+					circle(0,0,2)
+				}
+		}
+	}
+				

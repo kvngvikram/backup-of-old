@@ -1,0 +1,38 @@
+pa_define(100,100,250,p,e) ; use length in mm and scaling factor
+
+locate(0,0,0,1,0,0,0){
+e(1){
+	fill{
+		within{cylinder(50,50,60,40,40,60)}
+		notin {cylinder(50,50,58,38,38,56)}
+		notin {cylinder(50,50,2,15,15,2)}
+	}
+}
+}
+
+locate(0,0,400,1,0,0,0){
+e(2){
+	fill{
+		within{cylinder(50,50,2,37,37,2)}
+		locate(30,30,0,1,0,0,0){notin {box3d(0,0,0,1,1,2)}}
+		locate(30,34,0,1,0,0,0){notin {box3d(0,0,0,1,1,2)}}
+		locate(40,30,0,1,0,0,0){notin {box3d(0,0,0,0,0,2)}}
+		locate(42,30,0,1,0,0,0){notin {box3d(0,0,0,0,0,2)}}
+
+}
+}
+}
+
+
+locate(0,0,100,1,0,0,0)
+{
+e(10){
+	fill{
+		within{box3d(18,18,40,82,82,-40)}
+		notin {box3d(20,20,40,80,80,-40)}
+	}
+
+}
+}
+
+

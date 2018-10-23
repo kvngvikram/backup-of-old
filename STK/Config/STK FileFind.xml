@@ -1,0 +1,42 @@
+<?xml version = "1.0" standalone = "yes"?>
+<FileFind TypeSelection = "0" version = "1.0">
+    <Cursor>
+        <Path Directory = "C:\Users\kvng\Dropbox\workspace\STK\Config\Pixmaps" />
+        <Path Directory = "C:\ProgramData\AGI\STK 11 (x64)\STKData\Pixmaps" />
+        <Path Directory = "E:\installed apps\STK\STKData\Pixmaps" />
+    </Cursor>
+    <DynamicEarthData>
+        <Path Directory = "C:\Users\kvng\Dropbox\workspace\STK\Config\DynamicEarthData" />
+        <Path Directory = "C:\ProgramData\AGI\STK 11 (x64)\DynamicEarthData" />
+        <Path Directory = "E:\installed apps\STK\DynamicEarthData" />
+    </DynamicEarthData>
+    <Help>
+        <Path Directory = "C:\Users\kvng\Dropbox\workspace\STK\Config\Help" />
+        <Path Directory = "C:\ProgramData\AGI\STK 11 (x64)\Help" />
+        <Path Directory = "E:\installed apps\STK\Help" />
+    </Help>
+    <HelpIndex>
+        <Path Directory = "C:\Users\kvng\Dropbox\workspace\STK\Config\Help" />
+        <Path Directory = "C:\ProgramData\AGI\STK 11 (x64)\Help" />
+        <Path Directory = "E:\installed apps\STK\Help" />
+    </HelpIndex>
+    <Image>
+        <Path Directory = "C:\Users\kvng\Dropbox\workspace\STK\Config\Pixmaps" />
+        <Path Directory = "C:\ProgramData\AGI\STK 11 (x64)\STKData\Pixmaps" />
+        <Path Directory = "E:\installed apps\STK\STKData\Pixmaps" />
+    </Image>
+    <LocalHelp>
+        <Path Directory = "C:\Users\kvng\Dropbox\workspace\STK\Config\Help" />
+        <Path Directory = "C:\ProgramData\AGI\STK 11 (x64)\Help" />
+        <Path Directory = "E:\installed apps\STK\Help" />
+    </LocalHelp>
+    <OnlineHelp>
+        <Path Directory = "C:\Users\kvng\Dropbox\workspace\STK\Config\Help" />
+        <Path Directory = "C:\ProgramData\AGI\STK 11 (x64)\Help" />
+        <Path Directory = "E:\installed apps\STK\Help" />
+    </OnlineHelp>
+    <VODataDir>
+        <Path Directory = "E:\installed apps\STK\STKData\VO\Textures" />
+        <Path Directory = "C:\Users\kvng\Documents\AGIDownloadData" />
+    </VODataDir>
+</FileFind>

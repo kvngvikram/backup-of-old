@@ -1,0 +1,11 @@
+pa_define(100,100,250,p,e) ; use length in mm and scaling factor
+
+locate(0,0,0,1,0,0,0){
+e(1){
+	fill{
+		within{cylinder(50,50,60,40,40,60)}
+		
+	}
+}
+}
+

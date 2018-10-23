@@ -1,0 +1,228 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Journal Article
+% LaTeX Template
+% Version 1.4 (15/5/16)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com) with extensive modifications by
+% Vel (vel@LaTeXTemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[twoside,twocolumn]{article}
+
+\usepackage{blindtext} % Package to generate dummy text throughout this template 
+
+\usepackage[sc]{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\linespread{1.05} % Line spacing - Palatino needs more space between lines
+\usepackage{microtype} % Slightly tweak font spacing for aesthetics
+
+\usepackage[english]{babel} % Language hyphenation and typographical rules
+
+\usepackage[hmarginratio=1:1,top=32mm,columnsep=20pt]{geometry} % Document margins
+\usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption} % Custom captions under/above floats in tables or figures
+\usepackage{booktabs} % Horizontal rules in tables
+
+\usepackage{lettrine} % The lettrine is the first enlarged letter at the beginning of the text
+
+\usepackage{enumitem} % Customized lists
+\setlist[itemize]{noitemsep} % Make itemize lists more compact
+
+\usepackage{abstract} % Allows abstract customization
+\renewcommand{\abstractnamefont}{\normalfont\bfseries} % Set the "Abstract" text to bold
+\renewcommand{\abstracttextfont}{\normalfont\small\itshape} % Set the abstract itself to small italic text
+
+\usepackage{titlesec} % Allows customization of titles
+\renewcommand\thesection{\Roman{section}} % Roman numerals for the sections
+\renewcommand\thesubsection{\roman{subsection}} % roman numerals for subsections
+\titleformat{\section}[block]{\large\scshape\centering}{\thesection.}{1em}{} % Change the look of the section titles
+\titleformat{\subsection}[block]{\large}{\thesubsection.}{1em}{} % Change the look of the section titles
+
+\usepackage{fancyhdr} % Headers and footers
+\pagestyle{fancy} % All pages have headers and footers
+\fancyhead{} % Blank out the default header
+\fancyfoot{} % Blank out the default footer
+\fancyhead[C]{Running title $\bullet$ May 2016 $\bullet$ Vol. XXI, No. 1} % Custom header text
+\fancyfoot[RO,LE]{\thepage} % Custom footer text
+
+\usepackage{titling} % Customizing the title section
+
+\usepackage{hyperref} % For hyperlinks in the PDF
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\setlength{\droptitle}{-4\baselineskip} % Move the title up
+
+\pretitle{\begin{center}\Huge\bfseries} % Article title formatting
+\posttitle{\end{center}} % Article title closing formatting
+\title{FOUR PROBE APPARATUS} % Article title
+\author{%
+\textsc{Vikram, Kiran} \\ %\thanks{A thank you or further information} \\[1ex] % Your name
+\normalsize Indian Institute of Space Science and Technology \\ % Your institution
+\normalsize \href{mailto:happykvng@gmail.com}{happykvng@gmail.com} % Your email address
+%\and % Uncomment if 2 authors are required, duplicate these 4 lines if more
+%\textsc{Jane Smith}\thanks{Corresponding author} \\[1ex] % Second author's name
+%\normalsize University of Utah \\ % Second author's institution
+%\normalsize \href{mailto:jane@smith.com}{jane@smith.com} % Second author's email address
+}
+\date{} % Leave empty to omit a date
+\renewcommand{\maketitlehookd}{%
+\begin{abstract}
+%\noindent \blindtext % Dummy abstract text - replace \blindtext with your %abstract text
+hello ! how are you my pussy kat we love pussy cat. and also dogs are man's best friends 
+\end{abstract}
+}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+% Print the title
+\maketitle
+
+%----------------------------------------------------------------------------------------
+%	ARTICLE CONTENTS
+%----------------------------------------------------------------------------------------
+
+\section{Introduction}
+
+\lettrine[nindent=0em,lines=3]{T}he purpose of 4 point probe method is to measure the resistivity of a semiconductor sample. The 4 probe setup consists of 4 equally spaced metal tips with finite radius. The tip is supported by springs on the other end to minimize excessive pressure on the metal. A high impedence current source is used to supply current through the outer probes. A voltmeter measures the voltage across the inner probes to determin the sample resistivity and hence, the energy band gap of the semiconductor sample.
+The sharp probes are placed on a 
+
+
+
+
+
+%------------------------------------------------
+\section{Apparatus}
+
+SK012 FOUR PROBE APPARATUS, Semiconductor sample. 
+
+
+
+
+
+%------------------------------------------------
+\section{Theory}
+
+The energy band gap E of a semiconductor is given by \\
+\centerline{$ E_{g}  = \frac{2k \times  2.3026 \times log_{10}\rho }{T^{-1}} \hspace{0.5cm} eV $} \\
+\\ 
+Where $ k = 8.6 \times 10^{-5} \hspace{0.5cm} eV/deg$ .\\
+$\rho$ is the resistivity of the semiconductor sample given by $\rho = \rho_{0} / f(W/s)$\\
+\\
+Where $\rho_{0} = \frac{V \times 2\pi s}{I}$\\
+W is the thickness of the sample.\\ s is the probe spacing.\\ f(W/s) function is the correction factor.\\ V is the voltage across the two inner probes.\\ I is the current across the two inner probes.\\
+
+
+%------------------------------------------------
+
+\section{Procedure}
+
+
+\begin{itemize}
+\item Put the four probe arrangement in the oven and connect the lead of the oven to socket(10). Also insert a PT100 temperature sensor into the hole given at the top of the four probe arrangement. 
+\item Conncet the red and black plug leads of the four probe arrangement to 4mm sockets marked as voltage V. 
+\item Conncet the yello plug leads to 4mm sockets marked as current. 
+\item Change swith to current mode to display the current reading. 
+\item Switch on the apparatus and slightly increase the current using current knob, say 4mA and note that the voltage should be positive.
+\item Set the current to desired value say 8 mA using current adjusting knob. Also select the range of multiplier using switch to x1 or x10.
+\item Switch on the oven. Green LED will glow showing the oven is on. 
+\item Change switch to temperature for display to show temperature reading. 
+\item Note the probe voltage on display for different values of temperatures.
+\end{itemize}
+
+%------------------------------------------------
+
+\section{Observations}
+
+\begin{itemize}
+\item Current C = 8.03 mA 
+\item Distance between probes S = 0.24 cm
+\item Thickness of sample W = 0.05 cm 
+\end{itemize}
+\begin{table}
+\caption{Example table}
+\centering
+\begin{tabular}{llr}
+\toprule
+\multicolumn{2}{c}{Name} \\
+\cmidrule(r){1-2}
+First name & Last Name & Grade \\
+\midrule
+John & Doe & $7.5$ \\
+Richard & Miles & $2$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\blindtext % Dummy text
+
+\begin{equation}
+\label{eq:emc}
+e = mc^2
+\end{equation}
+
+\blindtext % Dummy text
+
+%------------------------------------------------
+\section{Procedure}
+
+
+\begin{itemize}
+\item Put the four probe arrangement in the oven and connect the lead of the oven to socket(10). Also insert a PT100 temperature sensor into the hole given at the top of the four probe arrangement. 
+\item Conncet the red and black plug leads of the four probe arrangement to 4mm sockets marked as voltage V. 
+\item Conncet the yello plug leads to 4mm sockets marked as current. 
+\item Change swith to current mode to display the current reading. 
+\item Switch on the apparatus and slightly increase the current using current knob, say 4mA and note that the voltage should be positive.
+\item Set the current to desired value say 8 mA using current adjusting knob. Also select the range of multiplier using switch to x1 or x10.
+\item Switch on the oven. Green LED will glow showing the oven is on. 
+\item Change switch to temperature for display to show temperature reading. 
+\item Note the probe voltage on display for different values of temperatures.
+\end{itemize}
+
+%------------------------------------------------
+%------------------------------------------------
+
+\section{Discussion}
+
+\subsection{Subsection One}
+
+A statement requiring citation \cite{Figueredo:2009dg}.
+\blindtext % Dummy text
+
+\subsection{Subsection Two}
+
+\blindtext % Dummy text
+
+%----------------------------------------------------------------------------------------
+%	REFERENCE LIST
+%----------------------------------------------------------------------------------------
+
+\begin{thebibliography}{99} % Bibliography - this is intentionally simple in this template
+
+\bibitem[Figueredo and Wolf, 2009]{Figueredo:2009dg}
+Figueredo, A.~J. and Wolf, P. S.~A. (2009).
+\newblock Assortative pairing and life history strategy - a cross-cultural
+  study.
+\newblock {\em Human Nature}, 20:317--330.
+ 
+\end{thebibliography}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
+\grid

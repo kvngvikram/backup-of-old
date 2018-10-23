@@ -1,0 +1,15 @@
+[Analytical Graphics, Inc]
+WorkbookVersion=9.0
+Title=STK Viewer
+Description=STK Viewer
+ApplicationVersion=11.2.0
+Scenario=NO
+ActiveMDIState=FALSE
+[WorkState_v1_2]
+ptn_Child1=Frames
+[WorkState_v1_2.Frames]
+ptn_Child1=MainFrame
+ptn_Child2=ChildFrames
+[WorkState_v1_2.Frames.MainFrame]
+WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPLEAAAAAAAAAAAAAAFAEAAAAAIGDAAAAA
+Title=STK Viewer 11
