@@ -1,0 +1,5 @@
+checkout 
+
+To run shell commands in python code 
+	from subprocess import call
+

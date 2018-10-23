@@ -1,0 +1,13 @@
+for installing packages in python in ubuntu(linux) enter the following command into command window 
+	sudo apt-get install python-numpy python-scipy python-matplotlib python-pandas python-sympy python-nose
+
+To run a python .py file navigate to the file location in terminal by entering: cd home/workspace ...  
+and run the scirpt by typing: python script.py
+for WINDOWS 
+install python IDLE from https://www.python.org/downloads/release/python-2713/
+for packages http://winpython.github.io/ 
+
+
+Internet me search maar kiise karna he windows pe. Mujhe ghanta pata he 
+
+MAC ? Bhad me jao 
