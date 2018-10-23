@@ -1,0 +1,219 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>L4Q7</title><meta name="generator" content="MATLAB 9.2"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-09-19"><meta name="DC.source" content="L4Q7.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput">clear;
+clc;
+<span class="comment">% x[n] = [0 1 2 3 4] from n = 0</span>
+<span class="comment">% in code y[n]=[x x x x x] is denoted as x</span>
+x = [0 1 2 3 4]
+x = [ x x x x x ] <span class="comment">% y</span>
+h = [ 3 21]   <span class="comment">% h</span>
+ax = -1      <span class="comment">% starting point of y</span>
+ah = -2      <span class="comment">% starting point of h</span>
+
+<span class="comment">% selecting the final start point</span>
+a = ax+ah;
+
+<span class="comment">% a) first part of solution</span>
+
+m = length(x);
+n = length(h);
+x1 = [x,zeros(1,n)];
+h1 = [h,zeros(1,m)];
+
+
+<span class="comment">% c overlap and adding method</span>
+<span class="comment">% number of terms after convolution n + m - 1</span>
+<span class="keyword">for</span> i = 1:m+n-1
+    Y(i)=0; <span class="comment">% defining the i'th term 0 initially</span>
+    <span class="keyword">for</span> j = 1:m <span class="comment">% for all the terms in x</span>
+        <span class="keyword">if</span>(i-j+1&gt;0) <span class="comment">% but not the terms which are not overlapped</span>
+            Y(i) = Y(i) + x1(j)*h1(i-j+1); <span class="comment">% summation to Y and H is flipped</span>
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="comment">% defining the x axis for the the convolution solution</span>
+xaxis = a:a+numel(Y)-1;
+
+<span class="comment">% plotting</span>
+subplot(3,1,1)
+stem(xaxis,Y,<span class="string">'g'</span>)
+ylabel(<span class="string">'Convolution sum'</span>)
+xlabel(<span class="string">'---&gt; n'</span>)
+title(<span class="string">'Convolution by overlap and adding'</span>)
+
+<span class="comment">%a</span>
+
+<span class="comment">% conv(X,H) is the default function for the convolution of two signals</span>
+subplot(3,1,2)
+stem(xaxis,conv(x,h),<span class="string">'r'</span>)
+ylabel(<span class="string">'Convolution sum'</span>)
+xlabel(<span class="string">'---&gt; n'</span>)
+title(<span class="string">'Convolution using conv()'</span>)
+
+
+<span class="comment">% fft() and ifft() are periodic DFT but since sufficient padding with zeros is done linear convolution can be calculated. But they have one element extra on the end</span>
+subplot(3,1,3)
+stem([xaxis 0],real(ifft(fft(x1).*fft(h1))))
+title(<span class="string">'Convolution using fft() and ifft()'</span>)
+xlabel(<span class="string">'---&gt; n'</span>)
+ylabel(<span class="string">'Convolution sum'</span>)
+</pre><pre class="codeoutput">
+x =
+
+     0     1     2     3     4
+
+
+x =
+
+  Columns 1 through 13
+
+     0     1     2     3     4     0     1     2     3     4     0     1     2
+
+  Columns 14 through 25
+
+     3     4     0     1     2     3     4     0     1     2     3     4
+
+
+h =
+
+     3    21
+
+
+ax =
+
+    -1
+
+
+ah =
+
+    -2
+
+</pre><img vspace="5" hspace="5" src="L4Q7_01.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2017a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+clear;
+clc;
+% x[n] = [0 1 2 3 4] from n = 0 
+% in code y[n]=[x x x x x] is denoted as x
+x = [0 1 2 3 4]
+x = [ x x x x x ] % y 
+h = [ 3 21]   % h 
+ax = -1      % starting point of y 
+ah = -2      % starting point of h 
+
+% selecting the final start point 
+a = ax+ah; 
+
+% a) first part of solution
+
+m = length(x);
+n = length(h);
+x1 = [x,zeros(1,n)];
+h1 = [h,zeros(1,m)];
+
+
+% c overlap and adding method
+% number of terms after convolution n + m - 1
+for i = 1:m+n-1
+    Y(i)=0; % defining the i'th term 0 initially
+    for j = 1:m % for all the terms in x
+        if(i-j+1>0) % but not the terms which are not overlapped
+            Y(i) = Y(i) + x1(j)*h1(i-j+1); % summation to Y and H is flipped
+        end
+    end
+end
+
+% defining the x axis for the the convolution solution
+xaxis = a:a+numel(Y)-1;
+
+% plotting 
+subplot(3,1,1)
+stem(xaxis,Y,'g')
+ylabel('Convolution sum')
+xlabel('REPLACE_WITH_DASH_DASH-> n')
+title('Convolution by overlap and adding') 
+
+%a
+
+% conv(X,H) is the default function for the convolution of two signals 
+subplot(3,1,2)
+stem(xaxis,conv(x,h),'r')
+ylabel('Convolution sum')
+xlabel('REPLACE_WITH_DASH_DASH-> n')
+title('Convolution using conv()')
+
+
+% fft() and ifft() are periodic DFT but since sufficient padding with zeros is done linear convolution can be calculated. But they have one element extra on the end  
+subplot(3,1,3)
+stem([xaxis 0],real(ifft(fft(x1).*fft(h1))))
+title('Convolution using fft() and ifft()')
+xlabel('REPLACE_WITH_DASH_DASH-> n')
+ylabel('Convolution sum')
+##### SOURCE END #####
+--></body></html>

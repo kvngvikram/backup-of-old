@@ -1,0 +1,14 @@
+A = [2 7 9 7 ; 3 1 5 6 ; 8 1 2 5]
+q = A' % transpose
+w = A(:,[1 4]) %1st and 4th columns
+e = A([2 3],[3 1]) % elements 2,2 ;2,3 ;3,3 ;3,1
+r = reshape(A,2,6) % arrangng into 2 x 6 matrix column-wise
+t = flipud(A) % flips columns with mirrors
+y = fliplr(A) % flips rows
+u = [A ; A(end,:)]
+i = A(1:3,:) % entire matrix
+o = [A ; A(1:2,:)] % repeatition of first two columns
+p = sum(A) % sum of each column
+a = sum(A')% sum of each row
+s = sum(A,2)
+d = [ [ A ; sum(A) ] [ sum(A,2) ; sum(A(:)) ] ]
