@@ -16,17 +16,15 @@ import matplotlib.pyplot as plt
 # reading images and converting them into numpy arrays
 ni = cv2.imread('noise_image.png',0)
 ni = np.asarray(ni,dtype=float)
-oi = cv2.imread('original.png',0)
-oi = np.asarray(oi,dtype=float)
 
 # Padding with offset on all directions
 ni = np.pad(ni,((offset,offset),(offset,offset)),'constant',constant_values=0.0)
-oi = np.pad(oi,((offset,offset),(offset,offset)),'constant',constant_values=0.0)
 
 # preparing the required variables with same dimensions as images
 avg = ni * 0 
 var = ni * 0
-lrvar = oi * 0
+
+ni = ni + np.asarray( ni == 0 )
 
 
 for i in np.asarray( range( ni.shape[0] - 2 * offset ) ) + offset :
@@ -36,8 +34,6 @@ for i in np.asarray( range( ni.shape[0] - 2 * offset ) ) + offset :
         avg[i][j] = ni[ i-offset : i+offset+1 , j-offset : j+offset+1 ].mean()
         # calculation the local varience of noisy image
         var[i][j] = ni[ i-offset : i+offset+1 , j-offset : j+offset+1 ].var()
-        # calculating the local varience of original image
-        lrvar[i][j] = oi[ i-offset : i+offset+1 , j-offset : j+offset+1 ].var()
 
 ######################################################
 
