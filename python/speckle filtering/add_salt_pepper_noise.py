@@ -21,7 +21,7 @@ def sp_noise(image,prob,low_value,high_value):   # function to add salt and pepp
     return output
 
 
-image = cv2.imread('original.jpg',0)
+image = cv2.imread('original.png',0)
 noise_image = sp_noise(image,0.05,5,250)
 cv2.imwrite('noise_image.png',noise_image)
 
