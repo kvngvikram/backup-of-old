@@ -25,7 +25,7 @@ avg = ni * 0
 var = ni * 0
 
 ni = ni + np.asarray( ni == 0 )
-
+R = ni*0 
 
 for i in np.asarray( range( ni.shape[0] - 2 * offset ) ) + offset :
     for j in np.asarray( range( ni.shape[1] - 2 * offset ) ) + offset :
@@ -34,7 +34,24 @@ for i in np.asarray( range( ni.shape[0] - 2 * offset ) ) + offset :
         avg[i][j] = ni[ i-offset : i+offset+1 , j-offset : j+offset+1 ].mean()
         # calculation the local varience of noisy image
         var[i][j] = ni[ i-offset : i+offset+1 , j-offset : j+offset+1 ].var()
-
+'''
+        S = var[i][j]**0.5
+        Im = avg[i][j] 
+        Ic = ni[i][j]
+        Ci = np.nan_to_num( S/Im ) 
+        Cu = (1.0/float(no_of_looks))**0.5
+        Cmax = (1.0+2.0/float(no_of_looks))**0.5
+        W = np.exp(-damping_factor*(Ci-Cu)/(Cmax-Ci))
+'''
+        #R[i][j] = Im * np.asarray( Ci <= Cu ) + Ic * np.asarray( Ci >= Cmax ) + ( Im*W + Ic*(1-W) ) * np.asarray(np.logical_and( Cu<Ci , Ci<Cmax ))  
+'''
+        if Ci < Cu : 
+            R[i][j] = Im
+        elif Ci > Cmax : 
+            R[i][j] = Ic 
+        else : 
+            R[i][j] =  Im*W + Ic*(1-W)  
+   '''         
 ######################################################
 
 S = var**0.5
