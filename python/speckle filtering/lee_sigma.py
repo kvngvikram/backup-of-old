@@ -1,7 +1,7 @@
 # Lee Sigma filter 
 # ref : https://www.imageeprocessing.com/2014/08/lee-filter.html
 
-kernel_size =  4        # n in the n*n kernel
+kernel_size =  5        # n in the n*n kernel
 
 kernel_size = kernel_size + ( 1 - kernel_size % 2 )     # kernel size should be odd 
 
@@ -24,8 +24,6 @@ oi = np.pad(oi,((offset,offset),(offset,offset)),'constant',constant_values=0.0)
 avg = ni * 0 
 var = ni * 0
 lrvar = oi * 0
-rvar = oi.var()
-rvar = ni.var()         ######3
 w = avg * 0
 
 dummyshape = [ 7 , 8 ]
@@ -37,8 +35,10 @@ for i in np.asarray( range( ni.shape[0] - 2 * offset ) ) + offset :
         var[i][j] = ni[ i-offset : i+offset+1 , j-offset : j+offset+1 ].var()
         lrvar[i][j] = oi[ i-offset : i+offset+1 , j-offset : j+offset+1 ].var()
 
-w = var/(var+rvar)
 
+ref_var = ni.var()       ########
+
+w = var/(var+ref_var)
 dsi = avg + w*(ni-avg)
 
 
@@ -47,5 +47,5 @@ plt.imshow(ni,cmap='gray')
 plt.title('Noisy image')
 plt.figure(2)
 plt.imshow(dsi,cmap='gray')
-plt.title('Filtered image')
+plt.title('Filtered image | kernel size: '+str(kernel_size))
 plt.show()
