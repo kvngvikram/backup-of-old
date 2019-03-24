@@ -48,4 +48,22 @@ plt.title('Noisy image')
 plt.figure(2)
 plt.imshow(dsi,cmap='gray')
 plt.title('Filtered image | kernel size: '+str(kernel_size))
+
+plt.figure(3)
+
+plt.subplot(311)
+hist , temp = np.histogram(oi,bins=256,range=(0,255))
+plt.plot(np.linspace(0,255,256),hist)
+plt.title('Original image wihtout noise')
+
+plt.subplot(312)
+hist , temp = np.histogram(ni,bins=256,range=(0,255))
+plt.plot(np.linspace(0,255,256),hist)
+plt.title('Noisy image')
+
+plt.subplot(313)
+hist , temp = np.histogram(dsi,bins=256,range=(0,255))
+plt.plot(np.linspace(0,255,256),hist)
+plt.title('filtered image histogram')
+
 plt.show()
