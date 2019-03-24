@@ -18,11 +18,11 @@ myarray= (/ 1,2,3,4,5,6,7,8,9,0 /)
 print*, myarray
 
 do i=3,13
-print*, i
+  print*, i
 newarray(i) = i 
 end do  
 
-nr = 1 
+r = 1 
 print*, nr 
 print*, (nr>0)
 
