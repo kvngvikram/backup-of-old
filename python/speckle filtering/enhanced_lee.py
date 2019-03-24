@@ -68,6 +68,8 @@ W = np.exp(-damping_factor*(Ci-Cu)/(Cmax-Ci))
 
 R = Im * np.asarray( Ci <= Cu ) + Ic * np.asarray( Ci >= Cmax ) + ( Im*W + Ic*(1-W) ) * np.asarray(np.logical_and( Cu<Ci , Ci<Cmax ))  
 
+dsi = R
+
 plt.figure(1)
 plt.imshow(ni,cmap='gray')
 plt.title('Noisy image')
