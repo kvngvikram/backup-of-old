@@ -1,8 +1,6 @@
-# Kuan filter 
-# ref : https://www.pcigeomatics.com/geomatica-help/concepts/orthoengine_c/Chapter_824.html
+# Averaging filter 
 
 kernel_size =  5        # n in the n*n kernel
-no_of_looks = 1 
 
 kernel_size = kernel_size + ( 1 - kernel_size % 2 )     # kernel size should be odd 
 
@@ -23,32 +21,14 @@ ni = np.pad(ni,((offset,offset),(offset,offset)),'constant',constant_values=0.0)
 oi = np.pad(oi,((offset,offset),(offset,offset)),'constant',constant_values=0.0)
 
 avg = ni * 0 
-var = ni * 0
 
-dummyshape = [ 7 , 8 ]
 for i in np.asarray( range( ni.shape[0] - 2 * offset ) ) + offset :
     for j in np.asarray( range( ni.shape[1] - 2 * offset ) ) + offset :
         
         # calculating the local average of kernal
         avg[i][j] = ni[ i-offset : i+offset+1 , j-offset : j+offset+1 ].mean()
-        var[i][j] = ni[ i-offset : i+offset+1 , j-offset : j+offset+1 ].var()
 
-Cu = (1.0/no_of_looks)**0.5
-S = var**0.5
-Im = avg 
-Ic = ni
-
-Ci = S/Im
-Ci = np.nan_to_num(Ci)
-
-#W = ( 1 - Cu**2 / Ci**2 )/( 1 + Cu**2 )
-#W = ( 1 - Cu / Ci )/( 1 + Cu )
-W = ( 1 - Cu**0.5 / Ci**0.5 )/( 1 + Cu**0.5 )
-W = np.nan_to_num(W)
-
-R = Ic*W + Im*(1-W)
-
-dsi = R 
+dsi = avg
 
 
 plt.figure(1)

@@ -75,11 +75,15 @@ dsi_hist = dsi_hist.astype(float)
 plt.plot(pixel_values,dsi_hist)
 plt.title('filtered image histogram')
 
+max_noise = 7
+
 plt.subplot(222)
+plt.axis([0,255,0,max_noise])
 plt.plot(pixel_values,(ni_hist/oi_hist))
 plt.title('noise')
 
 plt.subplot(224)
+plt.axis([0,255,0,max_noise])
 plt.plot(pixel_values,(dsi_hist/oi_hist))
 plt.title('noise after filteration')
 
