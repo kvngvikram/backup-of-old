@@ -1,5 +1,5 @@
 # Enhanced Lee filter 
-# ref : ://www.pcigeomatics.com/geomatica-help/concepts/orthoengine_c/Chapter_825.htmll
+# ref : https://www.pcigeomatics.com/geomatica-help/concepts/orthoengine_c/Chapter_825.html
 
 kernel_size =  5        # n in the n*n kernel
 no_of_looks = 1         

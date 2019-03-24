@@ -1,5 +1,5 @@
 # Lee filter 
-# ref : https://www.imageeprocessing.com/2014/08/lee-filter.html
+# ref : 
 
 kernel_size =  5        # n in the n*n kernel
 
