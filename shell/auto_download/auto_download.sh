@@ -18,6 +18,9 @@ echo $web
 input="station.csv"
 while IFS= read -r station
 do
-  echo "$station"
-  echo "$webb$station$webe"
+  echo
+  echo Station : "$station"
+  webaddress="$webb$station$webe"
+  echo Address : $webaddress 
+  wget $webaddress -O 'GPSdata.txt' 
 done < "$input"
