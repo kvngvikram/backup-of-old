@@ -3,7 +3,7 @@
 from bs4 import BeautifulSoup as mbs
 import requests
 
-webaddress = 'http://geodesy.unr.edu/NGLStationPages/stations/0ARK.sta'
+webaddress = 'http://geodesy.unr.edu/NGLStationPages/stations/AAUC.sta'
 
 page = requests.get(webaddress)
 print('connection successful' if page.status_code == 200 else 'connection failed')
@@ -17,9 +17,15 @@ lon_index = a.find('Longitude')      # index for longitude
 lat_string = a[lat_index+9:lat_index+70]
 lon_string = a[lon_index+10:lon_index+40]
 
-print(lat_string)
+#print(lat_string)
 
 end_string = '</h4>'
 
 lat_string = lat_string[:lat_string.find(end_string)]
 print(lat_string)
+
+lon_string = lon_string[:lon_string.find(end_string)]
+print(lon_string)
+
+print(float(lat_string))
+
