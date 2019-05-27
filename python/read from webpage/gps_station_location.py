@@ -1,6 +1,5 @@
 # This code is to give the location (lat lon) of GPS receiver station from a webpage
 
-from bs4 import BeautifulSoup as mbs
 import requests
 
 webaddress = 'http://geodesy.unr.edu/NGLStationPages/stations/AAUC.sta'
@@ -29,3 +28,9 @@ print(lon_string)
 
 print(float(lat_string))
 
+try :
+    station = raw_input('give the sation name : ')
+except :
+    station = input('give the station name with exception : ')
+
+print(station)
