@@ -15,7 +15,7 @@ echo $web
 # help source
 # https://www.cyberciti.biz/faq/unix-howto-read-line-by-line-from-file/
 
-input="station.csv"
+input="folder/station.csv"
 while IFS= read -r station
 do
   echo
