@@ -3,10 +3,10 @@
 #         http://gmt.soest.hawaii.edu/doc/5.3.2/makecpt.html
 #         http://gmt.soest.hawaii.edu/doc/5.3.2/gmt.conf.html
 PROJ="-JQ80c"
-LIMS="-R-80/80/-90/90"
+LIMS="-R60/110/0/50"
 PSFILE="earthquakes.ps"
-XOFFSET="-X2"
-YOFFSET="-Y4"
+XOFFSET="-X10c"
+YOFFSET="-Y5c"
 ORIENTATION="-P"
 additional_parameters="--PS_MEDIA=100cx50c"
 
