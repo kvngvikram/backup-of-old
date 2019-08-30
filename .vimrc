@@ -2,8 +2,8 @@
 " refer: https://github.com/junegunn/vim-plug
 " vim-plug auto install if not installed 
 if empty(glob('~/.vim/autoload/plug.vim'))
-	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs 
-		\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+				\https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	call plug#begin()    " This line not found in the github (presently when writing this)
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
@@ -68,11 +68,29 @@ vnoremap ;; <Esc><Esc>
 nnoremap ;; <Esc><Esc>
 " mapping , to showing .vimrc file in normal mode 
 nnoremap , :tabnew ~/.vimrc<ENTER>
-"Map j so that it will move DOWN line by line for long wrapped lines.
+"Map j,k so that it will move DOWN,UP line by line for long wrapped lines.
 nnoremap j gj
-"Map k so that it will move DOWN line by line for long wrapped lines.
 nnoremap k gk
-
+" Mapping for navigation using relative numbers when lines are wrapped
+" cant use <number>j when j is mapped to gj above. Refer: https://vi.stackexchange.com/a/16944
+nnoremap <expr> j v:count == 0 ? 'gj' : "\<Esc>".v:count.'j'
+nnoremap <expr> k v:count == 0 ? 'gk' : "\<Esc>".v:count.'k'
+""""""""""""""""""jupyter-vim plugin mappings""""""""""""""""""
+" There are default mappings for jupyter-vim aswell
+" These are only for .py files
+" open jupiter qtconsole and connect to it. Note: no spaces before \
+" qtconsole can be opened with configurations, refer ~/.jupyter/jupyter_qtconsole_config.py
+autocmd BufReadPost,BufNewFile *.py, 
+			\nnoremap ^ :!jupyter qtconsole --JupyterWidget.syntax_style="paraiso-dark"&<ENTER>
+			\:sleep 500m <ENTER>
+			\:JupyterConnect<ENTER>
+autocmd BufReadPost,BufNewFile *.py, nmap m V<Plug>JupyterRunVisual
+autocmd BufReadPost,BufNewFile *.py, vmap m <Plug>JupyterRunVisual
+autocmd BufReadPost,BufNewFile *.py, nmap & oclear<Esc>V<Plug>JupyterRunVisualddk:w<CR>
+autocmd BufReadPost,BufNewFile *.py, nmap mqt o%matplotlib<Space>qt<Esc>V<Plug>JupyterRunVisualddk:w<CR>
+""""""""""""""""""     tex file mappings     """"""""""""""""""
+autocmd BufReadPost,BufNewFile *.tex, inoremap ;q <Esc>:w<CR><Esc>:!pdflatex %<CR><CR>
+autocmd BufReadPost,BufNewFile *.tex, nnoremap ;q <Esc>:w<CR><Esc>:!pdflatex %<CR><CR>
 
 """""""""""""""""""""""""""""   filetype   """""""""""""""""""""""""""""
 function! Text_file_commands()
@@ -88,7 +106,6 @@ function! Text_file_commands()
 	nnoremap m z=1<ENTER><ENTER> 
 	" Lines from
 	" http://www.panozzaj.com/blog/2016/03/21/ignore-urls-and-acroynms-while-spell-checking-vim/
-	"
 	" Donn't mark URL-like things as spelling errors
 	syn match UrlNoSpell '\w\+:\/\/[^[:space:]]\+' contains=@NoSpell
 	" Don't count acronyms / abbreviations as spelling errors
