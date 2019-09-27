@@ -2,8 +2,8 @@
 " refer: https://github.com/junegunn/vim-plug
 " vim-plug auto install if not installed 
 if empty(glob('~/.vim/autoload/plug.vim'))
-	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-				\https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	" !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	!wget -P ~/.vim/autoload/ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim 
 	call plug#begin()    " This line not found in the github (presently when writing this)
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
@@ -11,13 +11,16 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'https://github.com/ajh17/VimCompletesMe'
 Plug 'jupyter-vim/jupyter-vim' 		" refer : https://github.com/wmvanvliet/jupyter-vim
+" Plug 'https://github.com/ycm-core/YouCompleteMe'
+" Plug 'https://github.com/grst/jupyter-vim.git'
 call plug#end()
 " To install new plugins enter this command once vim in opened 
 " :PlugInstall
 
 
 " This is to have a bash like autocomplete
-set completeopt=menu,longest
+" set completeopt=menu,longest
+set completeopt+=longest
 
 " dictionary path
 set dictionary+=/usr/share/dict/british-english
@@ -87,7 +90,7 @@ autocmd BufReadPost,BufNewFile *.py,
 autocmd BufReadPost,BufNewFile *.py, nmap m V<Plug>JupyterRunVisual
 autocmd BufReadPost,BufNewFile *.py, vmap m <Plug>JupyterRunVisual
 autocmd BufReadPost,BufNewFile *.py, nmap & oclear<Esc>V<Plug>JupyterRunVisualddk:w<CR>
-autocmd BufReadPost,BufNewFile *.py, nmap mqt o%matplotlib<Space>qt<Esc>V<Plug>JupyterRunVisualddk:w<CR>
+autocmd BufReadPost,BufNewFile *.py, nmap %qt o%matplotlib<Space>qt<Esc>V<Plug>JupyterRunVisualddk:w<CR>
 """"""""""""""""""     tex file mappings     """"""""""""""""""
 autocmd BufReadPost,BufNewFile *.tex, inoremap ;q <Esc>:w<CR><Esc>:!pdflatex %<CR><CR>
 autocmd BufReadPost,BufNewFile *.tex, nnoremap ;q <Esc>:w<CR><Esc>:!pdflatex %<CR><CR>
