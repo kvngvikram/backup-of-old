@@ -9,7 +9,7 @@ bind-key -n M-y resize-pane -L
 bind-key -n M-o resize-pane -R
 
 bind-key -n M-p previous-window
-bind-key -n M-m next-window
+bind-key -n M-n next-window
 
 bind-key -n M-, display-panes \; split-window -h -c "#{pane_current_path}"    
 bind-key -n M-/ display-panes \; split-window -v -c "#{pane_current_path}"
