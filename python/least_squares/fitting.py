@@ -6,7 +6,8 @@ def func(x,c):
     #return c[0]*x**3 + c[1]*x**2 + c[2]*x + c[3]*x*0.5 + c[4]
     #return c[0]*np.exp(c[1]*x)
     #return c[0]*np.exp(c[1]*x) + c[2]
-    return c[0]*np.cos(x*c[1]) + c[2]*np.sin(x*c[3])
+    #return c[0]*np.cos(x*c[1]) + c[2]*np.sin(x*c[3])
+    return c[0]*x + c[1]*x**2 + c[2]*x**3 + c[3]
 
 
 c = np.array([5 , 1 , 10,0.8  ])
