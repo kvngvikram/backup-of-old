@@ -47,6 +47,13 @@ Plug 'julienr/vim-cellmode'
 
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
+
+Plug 'christoomey/vim-tmux-navigator'
+
+Plug 'vim-airline/vim-airline'
+"Plug 'powerline/powerline'
+
+Plug 'vim-scripts/SyntaxRange'
 call plug#end()
 " To install new plugins enter this command once vim in opened 
 " :PlugInstall
@@ -63,10 +70,26 @@ set completeopt+=longest
 
 """"""""""""""""""""""""""""" YCM
 let g:ycm_autoclose_preview_window_after_insertion = 1
+
 """"""""""""""""""""""""""""" cellmode
 let g:cellmode_default_mappings='0'
+
+""""""""""""""""""""""""""""" cellmode
+let g:jupyter_mapkeys='0'
+
 """"""""""""""""""""""""""""" NERDTree-tabs
 nnoremap <Leader>t :NERDTreeTabsToggle<CR>
+
+""""""""""""""""""""""""""""" vim-tmux-navigator
+let g:tmux_navigator_no_mappings = 1
+nnoremap <C-h> :TmuxNavigateLeft<cr>
+nnoremap <C-j> :TmuxNavigateDown<cr>
+nnoremap <C-k> :TmuxNavigateUp<cr>
+nnoremap <C-l> :TmuxNavigateRight<cr>
+
+""""""""""""""""""""""""""""" SyntaxRange
+" For python in .sh scripts
+autocmd BufReadPost,BufNewFile *.sh, :call SyntaxRange#Include('#python_begin','#python_end','python','NonText')
 
 " dictionary path
 set dictionary+=/usr/share/dict/british-english
@@ -76,8 +99,8 @@ set cursorline
 set ruler
 
 " always show statusline
-set laststatus=2
-set statusline=\ %F\ »\ %h%m%r\ %y%=\ %n\ »\ %-10.(%l,%c%V%)\ →\ %P
+"set laststatus=2
+"set statusline=\ %F\ »\ %h%m%r\ %y%=\ %n\ »\ %-10.(%l,%c%V%)\ →\ %P
 
 set smarttab
 set tabstop=4
@@ -247,7 +270,8 @@ function! Jupyter_vim_console_commands()
 	"nmap <CR> mzV:JupyterSendRange<CR>:sleep 20m<CR>:call VimuxSendKeys("Enter")<CR>`z
 	nnoremap <CR> mz0v$h"zy:call VimuxSendText(@z)<CR>:call VimuxSendKeys("M-Enter")<CR><Esc>`z
 	"nmap <CR> V<Plug>JupyterRunVisual:call VimuxSendKeys("Enter")<CR>
-	vmap <Leader><CR> <Plug>JupyterRunVisual:sleep 20m<CR>:call VimuxSendKeys("Enter")<CR>
+	"vmap <Leader><CR> <Plug>JupyterRunVisual:sleep 20m<CR>:call VimuxSendKeys("Enter")<CR>
+	vmap <Leader><CR> <Plug>JupyterRunVisual
 	vnoremap <CR> "zy:call VimuxSendText(@z)<CR>:call VimuxSendKeys("M-Enter")<CR>
 	"vnoremap <CR> "zy:call VimuxSendText(@z)<CR>:call VimuxSendKeys("Enter")<CR>
 	"vnoremap <CR> "zy:call VimuxRunCommand(@z)<CR>
@@ -260,12 +284,13 @@ function! Jupyter_vim_console_commands()
 	" cellmode
 	let g:cellmode_default_mappings='0' 	" disable the default mappings
 	let g:cellmode_tmux_panenumber='1'
+
 	nnoremap <Leader>r mzggVG:call RunTmuxPythonChunk()<CR>:call VimuxSendKeys("M-Enter")<CR>`z
 	nnoremap <Leader><CR> mzVgg:call RunTmuxPythonChunk()<CR>:call VimuxSendKeys("M-Enter")<CR>`zzz
 	
 	"nmap <Leader>qt o%matplotlib<Space>qt<Esc>V<Plug>JupyterRunVisualddk:w<CR>:call VimuxSendKeys("Enter")<CR>
 	nmap <Leader>qt :call VimuxRunCommand("%matplotlib qt")
-	nnoremap & :call VimuxSendText("clear")<CR>:call VimuxSendKeys("M-Enter")<CR>
+	nnoremap <Leader>& :call VimuxSendText("clear")<CR>:call VimuxSendKeys("M-Enter")<CR>
 
 endfunction
 
