@@ -47,6 +47,7 @@ To show only boot messages while booting follow  https://askubuntu.com/questions
 
 for adding keybindings to byobu edit keybindings.tmux file in ~/.byobu
 original keybindings can be found in /usr/share/byobu/keybings/f-keys.tmux
+byobu-config will not work when python env is of anaconda, try sudo byobu-config then (if anaconda is installed locally and not for root).
 
 Anaconda: 
 Download Anaconda .sh file and install using 'bash file.sh'

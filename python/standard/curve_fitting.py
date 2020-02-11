@@ -6,7 +6,7 @@ def func(x , a , b , c , d):
 	return a*np.sin(b*x+c)+d
 
 
-x_data = np.linspace(-3,3,101)
+x_data = np.linspace(0,np.pi,101)
 y = func(x_data,1,2,3,4)
 
 y_noise = 0.2*np.random.normal(size=np.size(x_data)) 
