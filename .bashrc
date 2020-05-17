@@ -117,6 +117,8 @@ if ! shopt -oq posix; then
 fi
 [ -r /home/happy/.byobu/prompt ] && . /home/happy/.byobu/prompt   #byobu-prompt#
 
+
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/happy/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
@@ -133,7 +135,6 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 
-
 ######################### The todo list ? 
 cat ~/Desktop/todo.txt
 
@@ -144,13 +145,36 @@ export HELP_DIR="$HOME/gg/help/"
 export INSTITUTE="NARL"
 #########################
 
-
-######################### for ranger
-alias ranger='ranger --choosedir=$HOME/.tmp_rangerdir; LASTDIR=`cat $HOME/.tmp_rangerdir`; cd "$LASTDIR"; rm $HOME/.tmp_rangerdir'
-
 ######################### vim as default editor
 VISUAL=vim; export VISUAL EDITOR=vim; export EDITOR
 
-######################### for nvim, alias
-alias vim='$HOME/vim/./nvim.appimage'
+######################### for ranger
+alias ranger='ranger --choosedir=$HOME/.tmp_rangerdir; LASTDIR=`cat $HOME/.tmp_rangerdir`; cd "$LASTDIR"; rm $HOME/.tmp_rangerdir'
+alias rngr='ranger' # this will recursively call previous alias
+
+######################### for xdg-open
+alias xo='xdg-open'
+
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+
+######################### vim
+# my_vim="$HOME/vim/nvim.appimage.v0.5.0"
+# vim() {
+# if [ -z $TMUX ]; then
+# 	echo $1 > $HOME/.tmp_vim_byobu_open_file
+# 	byobu
+# else
+# 	$my_vim $1
+# fi
+# }
+# if [ $TMUX ]; then
+# 	if [ -f $HOME/.tmp_vim_byobu_open_file ]; then
+# 		$my_vim $(cat $HOME/.tmp_vim_byobu_open_file)
+# 		rm $HOME/.tmp_vim_byobu_open_file
+# 	fi
+# fi
+
+
 

@@ -48,17 +48,16 @@ endif
 call plug#begin('~/.vim/plugged')
 
 "Plug 'https://github.com/ycm-core/YouCompleteMe'
-"Plug 'https://github.com/ajh17/VimCompletesMe'
+Plug 'https://github.com/ajh17/VimCompletesMe'
+
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-Plug 'benmills/vimux'
-Plug 'jupyter-vim/jupyter-vim' 		" refer : https://github.com/jupyter-vim/jupyter-vim
-Plug 'julienr/vim-cellmode'
+"Plug 'benmills/vimux'
+"Plug 'jupyter-vim/jupyter-vim' 		" refer : https://github.com/jupyter-vim/jupyter-vim
+"Plug 'julienr/vim-cellmode'
 "Plug 'ivanov/vim-ipython'
 
 Plug 'jpalardy/vim-slime'
-
-"Plug 'goerz/jupytext.vim'
 
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
@@ -70,7 +69,6 @@ Plug 'vim-airline/vim-airline-themes'
 " Install this: https://github.com/powerline/fonts
 
 Plug 'vim-scripts/SyntaxRange'
-
 
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/asyncomplete.vim'
@@ -89,9 +87,21 @@ Plug 'Yggdroot/indentLine'
 " A game :
 Plug 'vim/killersheep'
 
+Plug 'tpope/vim-commentary'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+
+Plug 'jceb/vim-orgmode'
+
+Plug 'lervag/vimtex'
+
+Plug 'rhysd/vim-grammarous'
+
+" Plug 'wellle/context.vim'
+
+" VS Code like color scheme
+Plug 'tomasiser/vim-code-dark'
 
 call plug#end()
 " To install new plugins enter this command once vim in opened 
@@ -104,30 +114,24 @@ let mapleader = "\<Space>"
 
 " This is to have a bash like autocomplete
 "set completeopt=menu,longest
-set completeopt+=menu,longest
+" set completeopt+=menu,longest
 
 """"""""""""""""""""""""""""" YCM
 "let g:ycm_autoclose_preview_window_after_insertion = 1
 
 """"""""""""""""""""""""""""" vim-lsp, asynccomplete
+"" For colors check the colors-section
 let g:lsp_semantic_enabled = 0
 let g:lsp_preview_float = 1  " details of aurguments in a floating popup
 let g:lsp_diagnostics_enabled = 1   " Checking the code for errors
 let g:lsp_diagnostics_echo_cursor = 1  " Display error below at :command line
 let g:lsp_signs_enabled = 1   " Signs on the left of line numbers
 let g:lsp_textprop_enabled = 0  " highlighting of parts of code with problems
-highlight LspWarningHighlight ctermbg=brown
-"highlight link LspErrorHighlight Error
-"highlight link LspWarningHighlight hl-Ignore
 let g:lsp_highlights_enabled = 0   " only for neovim 0.3+
 let g:lsp_virtual_text_enabled = 0 " only for neovim 0.3+ additional text next to problems
 let g:asyncomplete_auto_popup = 1
 let g:lsp_highlight_references_enabled = 1
-highlight lspReference ctermfg=white ctermbg=darkgrey
-"highlight lspReference ctermfg=lightyellow ctermbg=darkgrey
-highlight lspReference ctermfg=yellow ctermbg=darkgrey
-"highlight lspReference ctermfg=brown ctermbg=darkgrey
-"highlight Cursor ctermfg=white ctermbg=black
+" let g:lsp_preview_float = 1
 function! s:check_back_space() abort
 	    let col = col('.') - 1
 		return !col || getline('.')[col - 1]  =~ '\s'
@@ -169,12 +173,9 @@ nnoremap <C-l> :TmuxNavigateRight<cr>
 autocmd BufReadPost,BufNewFile *.sh, :call SyntaxRange#Include('#python_begin','#python_end','python','NonText')
 
 """"""""""""""""""""""""""""" vim-airline
+"" For colors check the colors-section
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-" use these fonts: https://github.com/powerline/fonts/blob/master/UbuntuMono/Ubuntu%20Mono%20derivative%20Powerline.ttf
-"let g:airline_theme='simple'
-"let g:airline_theme='sol'
-let g:airline_theme='cobalt2'
 
 """"""""""""""""""""""""""""" indentLine
 "let g:indentLine_setColors = 0
@@ -183,6 +184,11 @@ let g:indentLine_char = '|'
 let g:indentLine_enabled = 1
 "let g:indentLine_concealcursor = 'inc'
 "let g:indentLine_conceallevel = 1
+
+""""""""""""""""""""""""""""" vimtex
+" let g:vimtex_quickfix_autoclose_after_keystrokes = 1
+let g:vimtex_quickfix_enabled = 0
+let g:tex_flavor="latex"
 
 "" dictionary path
 "set dictionary+=/usr/share/dict/british-english
@@ -234,6 +240,31 @@ autocmd BufReadPost * silent! loadview
 "set foldtext=getline(v:foldstart)
 set foldtext=foldtext()
 
+" color column
+set colorcolumn=80
+
+"""""""""""""""""""""""""""""colors-section"""""""""""""""""""""""""""""
+colorscheme codedark
+let g:airline_theme='codedark'  " This is airline support from plugin vim-code-dark
+highlight ColorColumn ctermbg=237
+highlight CursorLine ctermbg=237
+highlight Search ctermbg=DarkYellow ctermfg=White
+highlight LineNr ctermfg=Yellow
+highlight MatchParen ctermbg=Blue ctermfg=LightYellow
+highlight SpellBad ctermbg=red
+highlight SpellCap ctermbg=DarkBlue
+highlight SpellLocal ctermbg=DarkBlue
+highlight SpellRare ctermbg=DarkBlue
+highlight Pmenu ctermbg=239 ctermfg=white
+highlight PmenuSel ctermfg=white
+highlight Folded ctermbg=17 ctermfg=159
+" ctermbg=DarkBlue
+" highlight LineNr ctermfg=LightYellow ctermbg=DarkBlue
+" highlight LspWarningHighlight ctermbg=brown
+"highlight link LspErrorHighlight Error
+"highlight link LspWarningHighlight hl-Ignore
+"highlight lspReference ctermfg=lightyellow ctermbg=darkgrey
+highlight lspReference ctermfg=LightYellow ctermbg=239
 
 """""""""""""""""""""""""""""   mappings   """""""""""""""""""""""""""""
 " mapping Esc key in insert mode and also save the file and just Esc in
@@ -260,7 +291,8 @@ nnoremap <expr> j v:count == 0 ? 'gj' : "\<Esc>".v:count.'j'
 nnoremap <expr> k v:count == 0 ? 'gk' : "\<Esc>".v:count.'k'
 
 " General_Vimux_mapping
-nnoremap <Leader>r :call VimuxRunCommand(@r)<CR>
+" nnoremap <Leader>r :call VimuxRunCommand(@r)<CR>
+nnoremap <Leader>r :!<C-r>r<CR><CR>
 
 " for warpping lines
 nnoremap <Leader>w :set wrap!<CR>
@@ -285,35 +317,53 @@ nnoremap <Leader>sn :if exists("g:syntax_on") <Bar>
 set backspace=indent,eol,start         " from: https://vi.stackexchange.com/a/2163
 
 " change split sizes
-nnoremap <C-u> <C-w>+
-nnoremap <C-i> <C-w>-
-nnoremap <C-y> <C-w><
-nnoremap <C-o> <C-w>>
+"nnoremap <C-u> <C-w>+
+"nnoremap <C-i> <C-w>-
+"nnoremap <C-y> <C-w><
+"nnoremap <C-o> <C-w>>
 
 
 
 """""""""""""""""""""""""""""   tex_file   """""""""""""""""""""""""""""
-"autocmd BufReadPost,BufNewFile *.tex, inoremap <Leader>q <Esc>:w<CR><Esc>:!pdflatex %<CR><CR>
-"autocmd BufReadPost,BufNewFile *.tex, nnoremap <Leader>q <Esc>:w<CR><Esc>:!pdflatex %<CR><CR>
 
+let g:tex_conceal=""
 function! Tex_file_commands()
-"	inoremap <Leader>q <Esc>:w<CR><Esc>:!pdflatex %<CR><CR>
-	nnoremap <Leader>q <Esc>:w<CR><Esc>:!pdflatex %<CR><CR>:!pdflatex %<CR><CR>
-	nnoremap <Leader>r <Esc>:w<CR><Esc>:call VimuxRunCommand("pdflatex ".@%." && bibtex ".@%[0:-5].".aux && pdflatex ".@%." && pdflatex ".@%." && exit")<CR><CR>
-endfunction
-autocmd BufReadPost,BufNewFile *.tex, :call Tex_file_commands()
+	" inoremap <Leader>q <Esc>:w<CR><Esc>:!pdflatex %<CR><CR>
+	" nnoremap <Leader>q <Esc>:w<CR><Esc>:!pdflatex %<CR><CR>:!pdflatex %<CR><CR>
+	" nnoremap <Leader>r <Esc>:w<CR><Esc>:call VimuxRunCommand("pdflatex ".@%." && bibtex ".@%[0:-5].".aux && pdflatex ".@%." && pdflatex ".@%." && exit")<CR><CR>
+	
+	" To show the exact text in math mode instead of shoing greek letters
+	" let g:tex_conceal=""
+	
+	" No colorcolumn for .tex files
+	set colorcolumn=0
 
+	" Avoind breaking of words at the end of line wrapping 
+	set linebreak
+
+	nnoremap <CR> z=1<ENTER><ENTER> 
+	" Donn't mark URL-like things as spelling errors
+	syn match UrlNoSpell '\w\+:\/\/[^[:space:]]\+' contains=@NoSpell
+	" Don't count acronyms / abbreviations as spelling errors
+	" (all upper-case letters, at least three characters)
+	" Also will not count acronym with 's' at the end a spelling error
+	" Also will not count numbers that are part of this
+	" Recognizes the following as correct:
+	syn match AcronymNoSpell '\<\(\u\|\d\)\{3,}s\?\>' contains=@NoSpell
+	" Jump to next and previous misspelled words
+	nnoremap <Leader>n ]s
+	nnoremap <Leader>N [s
+
+	" Grammer check
+	nmap <Leader>g :GrammarousCheck<CR>
+	nnoremap <Leader>G :GrammarousReset<CR>
+endfunction
+autocmd BufReadPost,BufNewFile *.tex, call Tex_file_commands()
 
 """""""""""""""""""""""""""""  text_file   """""""""""""""""""""""""""""
 function! Text_file_commands()
-	"syntax might not work with spell
-	"syntax off
-	" enable the spell check
-	"set spell  
-	" disable the cursorline
-"	set nocursorline 
-"	hi clear SpellBad
-"	hi SpellBad cterm=underline
+	set linebreak
+	set spell
 	" replace a word with the first suggestion from dictionary
 	nnoremap <CR> z=1<ENTER><ENTER> 
 	" Lines from
@@ -336,8 +386,8 @@ autocmd BufReadPost,BufNewFile *.txt, call Text_file_commands()
 """""""""""""""""""""""""""""   py_file    """""""""""""""""""""""""""""
 function! Python_file_commands()
 	" The following is for ease of writing py2nb compactable codes.
-	nmap <Leader>o o#\|<Space>
-	nmap <Leader>O O#\|<Space>
+	nmap <Leader>o o#<Space>\|<Space>
+	nmap <Leader>O O#<Space>\|<Space>
 endfunction
 " execute the following for some particular files
 autocmd BufReadPost,BufNewFile *.py, call Python_file_commands()
