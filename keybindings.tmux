@@ -14,6 +14,8 @@ bind-key -n M-n next-window
 bind-key -n M-, display-panes \; split-window -h -c "#{pane_current_path}"    
 bind-key -n M-/ display-panes \; split-window -v -c "#{pane_current_path}"
 bind-key -n M-. new-window -c "#{pane_current_path}" \; rename-window "-"
+bind-key -n M-m copy-mode
+
 set -g prefix F12
 unbind-key -n C-a
 

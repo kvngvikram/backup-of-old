@@ -73,3 +73,6 @@ for AppArmor.
 
 
 you can use shelltile gnome shell extension to tile window in corners etc.. 
+
+For firefox to play vidoes (not just youtube) install this 
+sudo apt install browser-plugin-freshplayer-pepperflash
